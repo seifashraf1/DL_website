@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Music Genre Classification</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="../home.html">Practical Machine Deep Learning</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../home.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Music Genre Classification</h1>
+        <ul class="list-unstyled">
+          <li>Andrew Hany</li>
+          <li>Layla Mohsen</li>
+          <li>Seif Ashraf</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Problem Statement</h2>
+		<p>
+			Our problem that we are trying to classify music based on 10 different genres.
+		</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Dataset</h2>
+
+        <p>
+          GTZAN Dataset, It contains 3 different formats: <br>
+
+          1) WAV Files <br>
+          2) Visual Representation
+          Images like Spectogram, Mel Spectogram, and Waveforms <br>
+          3) CSV file contains some music feature extracted from the song like the mean and the variance<br>
+          <br>
+          It has been used by many papers which indicates how
+           stable the dataset is
+          It contains many formats that
+          enable us to use many neural
+          network architectures (CNN on the images) and (RNN for example on the wav files)
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/dataset.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Input/Output Examples</h2>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/input_output.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">State of the art</h2>
+
+        <p>
+        1) CALM is a promising pre-training strategy for MIR. (2021) <br>
+        2) CALM learns richer representations by modeling audio instead of labels. <br>
+        3) It was used in this paper for different MIR tasks like our problem along with NLP Model on GTZAN dataset. <br>
+        4) It achieved accuracy: 79.7% <br>
+          
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/sota.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Orignial Model from Literature</h2>
+
+        <p>
+          Our base model uses a CNN Model <br>
+          <br>
+          The specifications of the model are as follows: <br>
+          1) Input layer: 64 * 256 neurons, corresponds to 64 mel scales and 256 time windows(23ms, 50% overlap). <br>
+          2) Convolution layer: 64 different 3 * 3 filters with a stride of 1. <br>
+          3) Max pooling layer: 2 * 4. <br>
+          4) Convolution layer: 64 different 3 * 5 filters with a stride of 1. <br>
+          5) It achieved 70% Accuracy. <br>
+          
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/ogmodel.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Proposed Updates</h2>
+
+        <p>
+			We found out the base model of the paper we got is not good, and their code is not well structured and it is too complicated to build on. So we decided to start from scratch
+		</p>
+
+		<h5 class="mt-5">Update #1: New Model</h5>
+		<p> 
+      We created three CNN Custom models on three different generated datasets (waveform, spectrogram, mel spectrogram).
+      We also created a RNN model to train on audio files.
+      In the end, we ensembled the 3 CNN models along with the RNN model.
+
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/ourmodel.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+
+		<h5 class="mt-5">Update #2: RNN Model trained on songs features</h5>
+		<p>
+			details here
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/update2.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Results</h2>
+
+        <p>
+			Add your results here, add graphs and images to illustrate it.
+			Compare your results to the original model and state of the art
+		</p>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/results.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 text-left">
+        <h2 class="mt-5">Technical report</h2>
+
+        <p>
+			  
+		</p>
+
+	 	<ul>
+		  <li>Programming framework: Tensorflow</li>
+		  <li>Training hardware: Colab </li>
+		  <li>Training time: </li>
+		  <li>Number of epochs: </li>
+		  <li>Time per epoch: </li>
+		</ul> 
+      </div>
+    </div>
+
+	<div class="row">
+	  <div class="col-lg-12 text-left">
+	    <h2 class="mt-5">Conclusion</h2>
+
+	    <p>
+			
+		</p>
+
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="col-lg-12 text-left">
+	    <h2 class="mt-5">References</h2>
+
+	    <p>
+	    	List all references here, the following are only examples
+	    </p>
+
+		<ol>
+		  <li><a href="https://arxiv.org/pdf/1802.09697v1.pdf">Model Reference</a></li>
+		  <li><a href="https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification">Dataset</a></li>
+		</ol> 
+	  </div>
+	</div>
+
+  </div>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.slim.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
