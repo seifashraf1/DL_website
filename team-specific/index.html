@@ -60,7 +60,12 @@
       <div class="col-lg-12 text-left">
         <h2 class="mt-5">Problem Statement</h2>
 		<p>
-			Our problem that we are trying to classify music based on 10 different genres.
+			Content analysis is a research tool used to determine the presence of certain words, themes, or
+      concepts within some given qualitative data. Content analysis is applied to many research problems, one
+      of them is content analysis on music signals or Music genre classification. A normal human can classify
+      music genres with 70% accuracy, but current models achieved 61% accuracy which is still below 70%.
+      The goal of this project is to try to reach or outperform the human perception accuracy in identifying the
+      genre of 10 common music genres.
 		</p>
       </div>
     </div>
@@ -156,27 +161,115 @@
         <p>
 			We found out the base model of the paper we got is not good, and their code is not well structured and it is too complicated to build on. So we decided to start from scratch
 		</p>
-
-		<h5 class="mt-5">Update #1: New Model</h5>
+    
+    <h5 class="mt-5">Update #1: New Model From Scratch</h5>
 		<p> 
-      We created three CNN Custom models on three different generated datasets (waveform, spectrogram, mel spectrogram).
-      We also created a RNN model to train on audio files.
-      In the end, we ensembled the 3 CNN models along with the RNN model.
+      We created two Custom CNN models on three different generated datasets (waveform, spectrogram, mel spectrogram). In the end, we ensembled 3 CNN models (two custom models)
+      and InceptionResNetV2 to get a better accuracy. 
+		</p>
+    
+
+    <br>
+
+    <h6>
+      EfficientNet Model Architecture (Custom model 1)
+    </h6>
+
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/custom1.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+    
+
+    <h6>
+      Custom CNN Model Architecture (Custom model 2)
+    </h6>
+  
+      <br/> <!-- Empty Line before the image -->
+        <div class="img-container" align="center"> <!-- Block parent element -->
+            <img src="resources/images/custom2.png" class="img-fluid text-center">
+        </div>
+        <br/> <!-- Empty Line after the image -->
+      
+    <h6>
+      InceptionResNetV2 
+    </h6>
+  
+      <br/> <!-- Empty Line before the image -->
+        <div class="img-container" align="center"> <!-- Block parent element -->
+            <img src="resources/images/inceptionv2.jpeg" class="img-fluid text-center">
+        </div>
+        <br/> <!-- Empty Line after the image -->
+    
+    <h5 class="mt-5">Update #2: Experimented various CNN architectures </h5>
+		
+    <p> 
+      We Experimented various CNN architectures like ResNet50, VGG16, VGG19, InceptionResNetV2 on the 3 different forms of the dataset 
 
 		</p>
 		<br/> <!-- Empty Line before the image -->
 	    <div class="img-container" align="center"> <!-- Block parent element -->
-      		<img src="resources/images/ourmodel.png" class="img-fluid text-center">
+      		<img src="resources/images/ResNet.png" class="img-fluid text-center">
     	</div>
     	<br/> <!-- Empty Line after the image -->
 
-		<h5 class="mt-5">Update #2: RNN Model trained on songs features</h5>
+		<h5 class="mt-5">Update #3: Experimented different RNN Models trained on songs features</h5>
 		<p>
-			details here
+			
+
 		</p>
 		<br/> <!-- Empty Line before the image -->
 	    <div class="img-container" align="center"> <!-- Block parent element -->
-      		<img src="resources/images/update2.png" class="img-fluid text-center">
+      		<img src="resources/images/rnn.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <h5 class="mt-5">Update #4: Ensembled RNN Models trained on songs features </h5>
+		<p>
+			
+      Ensembling different RNN models on MFCC features extracted from Audio waves
+
+
+    <h5 class="mt-5">Update #5: Extracted MFCC from Audio waves    </h5>
+		<p>
+      Extracted MFCC from Audio waves 
+
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/mfccs.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <h5 class="mt-5">Update #6: CRNN model </h5>
+		<p>
+			We tried to experiment CRNN architecture to combine the power of the two technologies. 
+
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/crnn.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <h5 class="mt-5">Update #7: Parallel CNN-RNN model </h5>
+		<p>
+			We tried to experiment a parallel CNN-RNN model architecture too. 
+
+		</p>
+		<br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/cnn-rnn.png" class="img-fluid text-center">
     	</div>
     	<br/> <!-- Empty Line after the image -->
       </div>
@@ -188,13 +281,42 @@
         <h2 class="mt-5">Results</h2>
 
         <p>
-			Add your results here, add graphs and images to illustrate it.
-			Compare your results to the original model and state of the art
+			Results from the CNN models along with the results of ensembling them
 		</p>
+
+    <br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/custom_results.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+    <br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/excel1.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
 
 		<br/> <!-- Empty Line before the image -->
 	    <div class="img-container" align="center"> <!-- Block parent element -->
-      		<img src="resources/images/results.png" class="img-fluid text-center">
+      		<img src="resources/images/results1.png" class="img-fluid text-center">
+    	</div>
+    	<br/> <!-- Empty Line after the image -->
+      </div>
+    </div>
+
+
+    <p>
+			Results from the RNN models along with the results of ensembling them
+		</p>
+    
+
+    <br/> <!-- Empty Line before the image -->
+	    <div class="img-container" align="center"> <!-- Block parent element -->
+      		<img src="resources/images/rnn_results.png" class="img-fluid text-center">
     	</div>
     	<br/> <!-- Empty Line after the image -->
       </div>
@@ -210,11 +332,11 @@
 		</p>
 
 	 	<ul>
-		  <li>Programming framework: Tensorflow</li>
-		  <li>Training hardware: Colab </li>
-		  <li>Training time: </li>
-		  <li>Number of epochs: </li>
-		  <li>Time per epoch: </li>
+		  <li>Programming framework: Tensorflow and Keras</li>
+		  <li>Training hardware: Colab GPU </li>
+		  <li>Training time: 20-30 mins Maximum</li>
+		  <li>Number of epochs: 100</li>
+		  <li>Time per epoch: average 14-15 sec </li>
 		</ul> 
       </div>
     </div>
@@ -224,6 +346,10 @@
 	    <h2 class="mt-5">Conclusion</h2>
 
 	    <p>
+
+        Ensembling on Mel Spectrogram format using 3 CNN models →  got 66.8% <br>
+        Ensembling on MFCC format using 2 RNN models → got 85.38% <br>
+
 			
 		</p>
 
@@ -241,6 +367,13 @@
 		<ol>
 		  <li><a href="https://arxiv.org/pdf/1802.09697v1.pdf">Model Reference</a></li>
 		  <li><a href="https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification">Dataset</a></li>
+      <li><a href="https://arxiv.org/pdf/1802.09697v1.pdf">link </a></li>
+      <li><a href="https://paperswithcode.com/paper/convolutional-neural-network-achieves-human">link </a></li>
+      <li><a href="https://github.com/ds7711/music_genre_classification"> link</a></li>
+      <li><a href="https://paperswithcode.com/paper/lyrics-based-music-genre-classification-using"> link</a></li>
+      <li><a href="https://paperswithcode.com/paper/bottom-up-broadcast-neural-network-for-music"> link</a></li>
+      <li><a href="https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/"> link</a></li>
+
 		</ol> 
 	  </div>
 	</div>
